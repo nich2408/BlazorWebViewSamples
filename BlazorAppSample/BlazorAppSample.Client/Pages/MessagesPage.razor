@@ -1,0 +1,49 @@
+﻿@page "/messages"
+@using BlazorAppSample.Client.Helpers
+@rendermode InteractiveWebAssembly
+@implements IDisposable
+
+<PageTitle>Messages</PageTitle>
+
+<button class="btn-primary rounded" @onclick="InitializeInteropAsync">Click me to start receiving messages</button>
+<p>@Status</p>
+
+@code {
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    private WebViewMessaggesHelper messageHelper = new WebViewMessaggesHelper();
+    private DotNetObjectReference<WebViewMessaggesHelper> messageHelperRef;
+
+    public string Status { get; set; }
+
+    private async void InitializeInteropAsync()
+    {
+        // Initializes the webview events in the Javascript runtime.
+        await JSRuntime.InvokeVoidAsync("initializeWebViewEvents");
+
+        // Initializes the helper reference needed to make Javascript interop with dotnet.
+        // More info: https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/call-dotnet-from-javascript?view=aspnetcore-8.0#pass-a-dotnetobjectreference-to-a-class-with-multiple-javascript-functions
+        messageHelperRef = DotNetObjectReference.Create(messageHelper);
+        await JSRuntime.InvokeVoidAsync("initializeDotNetMessagesHelper", messageHelperRef);
+
+        // This event will be used to handle the message received.
+        messageHelper.MessageReceived += MessageChanged;
+
+        Status = "Ready to receive";
+        StateHasChanged();
+    }
+
+    private void MessageChanged(object sender, string e)
+    {
+        // Store the received text in a property for UI showing purposes.
+        Status = e;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        messageHelper.MessageReceived -= MessageChanged;
+        messageHelperRef?.Dispose();
+    }
+}

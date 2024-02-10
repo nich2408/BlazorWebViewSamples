@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfAppSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppSample"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <wv2:WebView2 Name="webView"
+            Source="http://localhost:5100/messages"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"/>
+        <TextBox x:Name="txbMsg" Text="Write here the message" Grid.Row="1" Grid.Column="0" Background="Black" Foreground="LightGray"></TextBox>
+        <Button Content="Send message" Background="DodgerBlue" Grid.Row="1" Grid.Column="1" Height="50" Click="SendButton_Click"></Button>
+        <Button Content="Refresh page" Background="DarkGray" Grid.Row="1" Grid.Column="2" Height="50" Click="RefreshButton_Click"></Button>
+
+    </Grid>
+</Window>
