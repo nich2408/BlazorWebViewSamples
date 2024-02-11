@@ -2,7 +2,7 @@
 
 
 ## 🌐 Blazor WebView samples
-In this repository you can find samples on how to use host Blazor with a webiew.
+In this repository you can find samples on how to use Blazor within a webiew.
 
 ### 📁 Included samples
 #### ✉ Messages sample
