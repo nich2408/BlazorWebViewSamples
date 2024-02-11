@@ -1,3 +1,6 @@
+![image](https://github.com/nich2408/BlazorWebViewSamples/assets/98348348/1498fe3c-c8b4-4ec6-a2f2-fdc066eefd4d)
+
+
 ## 🌐 Blazor WebView samples
 In this repository you can find samples on how to use host Blazor with a webiew.
 
