@@ -7,10 +7,11 @@
 
 <button class="btn-success rounded" @onclick="InitializeInteropAsync">Click me to initialize</button>
 <p>Status: @Status</p>
-<p>Received from webview: @ReceivedMessage</p>
 
 <InputText @bind-Value=MessageToSend></InputText>
-<button class="btn-info rounded" @onclick=SendMessageAsync>Send to webview</button>
+<button class="btn-info rounded" @onclick=SendMessageAsync>Send to WebView</button>
+
+<p>Received from WebView: @ReceivedMessage</p>
 
 @code {
     [Inject]
