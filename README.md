@@ -21,3 +21,4 @@ In this repository you can find samples on how to use Blazor within a webiew.
 - The projects were created using `dotnet-8` with Visual Studio 2022 Community Edition
 - WebView2 JS documentation: https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/javascript/webview
 - WebView2 C# documentation: https://learn.microsoft.com/en-us/microsoft-edge/webview2/get-started/wpf#step-10---communication-between-host-and-web-content
+- Blazor logo and dotnet bot are property of Microsoft https://www.microsoft.com/
